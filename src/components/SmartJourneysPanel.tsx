@@ -13,8 +13,8 @@ const SmartJourneysPanel = () => {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-accent flex items-center justify-center">
-          <Route className="w-5 h-5 text-accent-foreground" />
+        <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+          <Route className="w-5 h-5 text-primary-foreground" />
         </div>
         <div>
           <h2 className="text-xl font-display font-bold text-foreground">Smart Journey Orchestration</h2>
@@ -23,18 +23,18 @@ const SmartJourneysPanel = () => {
       </div>
 
       {/* Journey Canvas */}
-      <div className="bg-card rounded-xl border border-border p-6 overflow-x-auto">
+      <div className="bg-card rounded-xl border border-border p-6 overflow-x-auto shadow-sm">
         <div className="flex items-center gap-2 mb-6">
-          <Sparkles className="w-4 h-4 text-accent" />
+          <Sparkles className="w-4 h-4 text-primary" />
           <span className="text-sm font-semibold text-foreground">AI-Adaptive Welcome Journey</span>
-          <span className="ml-2 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs">Live • Optimizing</span>
+          <span className="ml-2 px-2 py-0.5 rounded-full bg-success/10 text-success text-xs font-medium">Live • Optimizing</span>
         </div>
 
         <div className="flex items-center gap-4 min-w-[700px]">
           {journeyNodes.map((node, i) => (
             <div key={i} className="flex items-center gap-4">
               <div className="flex flex-col items-center gap-2">
-                <div className={`w-14 h-14 rounded-xl ${node.color} flex items-center justify-center shadow-lg`}>
+                <div className={`w-14 h-14 rounded-xl ${node.color} flex items-center justify-center shadow-md`}>
                   <node.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <span className="text-xs text-muted-foreground text-center max-w-[80px]">{node.label}</span>
@@ -46,9 +46,9 @@ const SmartJourneysPanel = () => {
           ))}
         </div>
 
-        <div className="mt-6 p-4 bg-secondary rounded-lg border border-border">
+        <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10">
           <div className="flex items-start gap-3">
-            <Sparkles className="w-4 h-4 text-accent mt-0.5" />
+            <Sparkles className="w-4 h-4 text-primary mt-0.5" />
             <div>
               <p className="text-sm font-medium text-foreground">AI Decision: Channel Selection</p>
               <p className="text-xs text-muted-foreground mt-1">
@@ -67,10 +67,10 @@ const SmartJourneysPanel = () => {
           { label: "Avg. Time to Convert", value: "3.2 days", change: "-2.1 days vs static" },
           { label: "Revenue per Contact", value: "$14.80", change: "+42% vs static" },
         ].map((stat, i) => (
-          <div key={i} className="bg-card rounded-xl border border-border p-5">
+          <div key={i} className="bg-card rounded-xl border border-border p-5 shadow-sm">
             <p className="text-2xl font-display font-bold text-foreground">{stat.value}</p>
             <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-            <p className="text-xs text-primary mt-2">{stat.change}</p>
+            <p className="text-xs text-primary mt-2 font-medium">{stat.change}</p>
           </div>
         ))}
       </div>

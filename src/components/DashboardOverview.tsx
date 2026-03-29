@@ -19,11 +19,11 @@ const recentActivity = [
   { action: "New automation triggered", campaign: "Welcome Journey", time: "3 hrs ago", type: "info" as const },
 ];
 
-const activityColors = {
-  ai: "bg-accent/10 text-accent",
-  warning: "bg-warning/10 text-warning",
-  success: "bg-success/10 text-success",
-  info: "bg-info/10 text-info",
+const activityDotColors = {
+  ai: "hsl(220, 78%, 44%)",
+  warning: "hsl(36, 90%, 55%)",
+  success: "hsl(152, 60%, 42%)",
+  info: "hsl(220, 70%, 55%)",
 };
 
 const DashboardOverview = () => {
@@ -34,9 +34,9 @@ const DashboardOverview = () => {
           <h1 className="text-2xl font-display font-bold text-foreground">Welcome back, Sarah</h1>
           <p className="text-sm text-muted-foreground mt-1">Here's what your AI co-pilot found today</p>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-border">
+        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/5 border border-primary/20">
           <Sparkles className="w-4 h-4 text-primary animate-pulse-glow" />
-          <span className="text-sm text-foreground">3 AI insights ready</span>
+          <span className="text-sm text-foreground font-medium">3 AI insights ready</span>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ const DashboardOverview = () => {
 
       {/* Chart + Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-card rounded-xl border border-border p-6">
+        <div className="lg:col-span-2 bg-card rounded-xl border border-border p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-semibold text-foreground">Weekly Engagement</span>
             <div className="flex items-center gap-4 text-xs">
@@ -63,34 +63,35 @@ const DashboardOverview = () => {
               <AreaChart data={engagementData}>
                 <defs>
                   <linearGradient id="openGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(160, 84%, 52%)" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="hsl(160, 84%, 52%)" stopOpacity={0} />
+                    <stop offset="5%" stopColor="hsl(220, 78%, 44%)" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="hsl(220, 78%, 44%)" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="clickGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(270, 80%, 65%)" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="hsl(270, 80%, 65%)" stopOpacity={0} />
+                    <stop offset="5%" stopColor="hsl(36, 90%, 55%)" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="hsl(36, 90%, 55%)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="day" stroke="hsl(215, 12%, 50%)" fontSize={12} />
-                <YAxis stroke="hsl(215, 12%, 50%)" fontSize={12} />
-                <Tooltip contentStyle={{ background: "hsl(225, 20%, 9%)", border: "1px solid hsl(225, 15%, 16%)", borderRadius: "8px", color: "hsl(210, 20%, 92%)" }} />
-                <Area type="monotone" dataKey="opens" stroke="hsl(160, 84%, 52%)" fill="url(#openGrad)" strokeWidth={2} />
-                <Area type="monotone" dataKey="clicks" stroke="hsl(270, 80%, 65%)" fill="url(#clickGrad)" strokeWidth={2} />
+                <XAxis dataKey="day" stroke="hsl(220, 10%, 50%)" fontSize={12} />
+                <YAxis stroke="hsl(220, 10%, 50%)" fontSize={12} />
+                <Tooltip contentStyle={{ background: "#fff", border: "1px solid hsl(220, 15%, 88%)", borderRadius: "8px", color: "hsl(220, 30%, 15%)" }} />
+                <Area type="monotone" dataKey="opens" stroke="hsl(220, 78%, 44%)" fill="url(#openGrad)" strokeWidth={2} />
+                <Area type="monotone" dataKey="clicks" stroke="hsl(36, 90%, 55%)" fill="url(#clickGrad)" strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-card rounded-xl border border-border p-6">
+        <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
             <Activity className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-foreground">AI Activity Feed</span>
           </div>
           <div className="space-y-3">
             {recentActivity.map((item, i) => (
-              <div key={i} className="flex items-start gap-3 p-3 bg-secondary rounded-lg">
-                <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${activityColors[item.type].split(" ")[0].replace("/10", "")}`}
-                  style={{ backgroundColor: item.type === "ai" ? "hsl(270,80%,65%)" : item.type === "warning" ? "hsl(38,92%,60%)" : item.type === "success" ? "hsl(160,84%,52%)" : "hsl(210,90%,60%)" }}
+              <div key={i} className="flex items-start gap-3 p-3 bg-muted rounded-lg">
+                <div
+                  className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
+                  style={{ backgroundColor: activityDotColors[item.type] }}
                 />
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-medium text-foreground">{item.action}</p>
