@@ -33,16 +33,16 @@ const insights = [
 
 const typeConfig = {
   opportunity: { icon: TrendingUp, color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
-  warning: { icon: AlertTriangle, color: "text-warning", bg: "bg-warning/10", border: "border-warning/20" },
-  insight: { icon: Lightbulb, color: "text-accent", bg: "bg-accent/10", border: "border-accent/20" },
+  warning: { icon: AlertTriangle, color: "text-accent", bg: "bg-accent/10", border: "border-accent/20" },
+  insight: { icon: Lightbulb, color: "text-info", bg: "bg-info/10", border: "border-info/20" },
 };
 
 const AICopilotPanel = () => {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-accent flex items-center justify-center">
-          <Brain className="w-5 h-5 text-accent-foreground" />
+        <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+          <Brain className="w-5 h-5 text-primary-foreground" />
         </div>
         <div>
           <h2 className="text-xl font-display font-bold text-foreground">AI Marketing Co-pilot</h2>
@@ -55,16 +55,16 @@ const AICopilotPanel = () => {
       </div>
 
       {/* AI Chat Prompt */}
-      <div className="bg-card rounded-xl border border-border p-5">
+      <div className="bg-card rounded-xl border border-border p-5 shadow-sm">
         <div className="flex items-center gap-3 mb-3">
-          <Brain className="w-4 h-4 text-accent" />
+          <Brain className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium text-foreground">Ask your AI co-pilot anything</span>
         </div>
         <div className="flex gap-2">
           <input
             type="text"
             placeholder="e.g. 'Why did my open rates drop last week?' or 'Suggest a campaign for Black Friday'"
-            className="flex-1 bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="flex-1 bg-muted border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
           />
           <button className="px-4 py-2.5 bg-gradient-primary rounded-lg text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity">
             Ask AI
@@ -72,7 +72,7 @@ const AICopilotPanel = () => {
         </div>
         <div className="flex gap-2 mt-3">
           {["Why did engagement drop?", "Best time to send?", "Suggest A/B test"].map((q) => (
-            <button key={q} className="px-3 py-1 rounded-full bg-secondary text-xs text-muted-foreground hover:text-foreground border border-border hover:border-primary/30 transition-all">
+            <button key={q} className="px-3 py-1 rounded-full bg-muted text-xs text-muted-foreground hover:text-foreground border border-border hover:border-primary/30 transition-all">
               {q}
             </button>
           ))}
@@ -87,7 +87,7 @@ const AICopilotPanel = () => {
           return (
             <div
               key={i}
-              className={`bg-card rounded-xl border ${config.border} p-5 hover:border-opacity-50 transition-all cursor-pointer group`}
+              className={`bg-card rounded-xl border ${config.border} p-5 hover:shadow-md transition-all cursor-pointer group shadow-sm`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="flex items-start gap-3 mb-3">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   BarChart3, Brain, FileText, Gauge, Home, Mail, MessageSquare,
-  MousePointerClick, Route, Settings, Sparkles, Users, Zap, ChevronLeft, ChevronRight
+  MousePointerClick, Route, Settings, Sparkles, Users, ChevronLeft, ChevronRight
 } from "lucide-react";
 
 const navItems = [
@@ -30,13 +30,13 @@ const AppSidebar = ({ activeSection, onSectionChange }: AppSidebarProps) => {
         collapsed ? "w-16" : "w-60"
       }`}
     >
-      <div className="flex items-center gap-2 px-4 h-16 border-b border-sidebar-border">
-        <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center flex-shrink-0">
-          <Zap className="w-4 h-4 text-primary-foreground" />
+      <div className="flex items-center gap-2.5 px-4 h-16 border-b border-sidebar-border">
+        <div className="w-8 h-8 rounded-full bg-gradient-accent flex items-center justify-center flex-shrink-0">
+          <Mail className="w-4 h-4 text-accent-foreground" />
         </div>
         {!collapsed && (
-          <span className="font-display font-bold text-foreground text-lg tracking-tight">
-            Pulse<span className="text-primary">AI</span>
+          <span className="font-display font-bold text-white text-lg tracking-tight">
+            Constant<span className="text-sidebar-primary"> Contact</span>
           </span>
         )}
       </div>
@@ -50,14 +50,14 @@ const AppSidebar = ({ activeSection, onSectionChange }: AppSidebarProps) => {
               onClick={() => onSectionChange(item.id)}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 isActive
-                  ? "bg-primary/10 text-primary glow-primary"
+                  ? "bg-sidebar-primary text-sidebar-primary-foreground"
                   : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               }`}
             >
               <item.icon className="w-4 h-4 flex-shrink-0" />
               {!collapsed && <span>{item.label}</span>}
               {isActive && !collapsed && (
-                <Sparkles className="w-3 h-3 ml-auto text-primary animate-pulse-glow" />
+                <Sparkles className="w-3 h-3 ml-auto animate-pulse-glow" />
               )}
             </button>
           );
@@ -74,7 +74,7 @@ const AppSidebar = ({ activeSection, onSectionChange }: AppSidebarProps) => {
         </button>
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="w-full flex items-center justify-center py-2 mt-1 rounded-lg text-muted-foreground hover:text-foreground transition-all"
+          className="w-full flex items-center justify-center py-2 mt-1 rounded-lg text-sidebar-foreground hover:text-white transition-all"
         >
           {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
         </button>
