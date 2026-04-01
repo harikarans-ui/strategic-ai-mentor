@@ -1,11 +1,13 @@
 import { useState } from "react";
 import AppSidebar from "@/components/AppSidebar";
 import DashboardOverview from "@/components/DashboardOverview";
+import InfluenceEnginePanel from "@/components/InfluenceEnginePanel";
+import LifecycleEnginePanel from "@/components/LifecycleEnginePanel";
+import PersonalizationEnginePanel from "@/components/PersonalizationEnginePanel";
+import CustomerSatisfactionPanel from "@/components/CustomerSatisfactionPanel";
+import RevenueImpactPanel from "@/components/RevenueImpactPanel";
 import AICopilotPanel from "@/components/AICopilotPanel";
-import ContentStudioPanel from "@/components/ContentStudioPanel";
 import SmartJourneysPanel from "@/components/SmartJourneysPanel";
-import PredictiveAnalyticsPanel from "@/components/PredictiveAnalyticsPanel";
-import DeliverabilityPanel from "@/components/DeliverabilityPanel";
 import { Construction } from "lucide-react";
 
 const ComingSoon = ({ title }: { title: string }) => (
@@ -18,14 +20,13 @@ const ComingSoon = ({ title }: { title: string }) => (
 
 const sections: Record<string, React.ReactNode> = {
   dashboard: <DashboardOverview />,
+  influence: <InfluenceEnginePanel />,
+  lifecycle: <LifecycleEnginePanel />,
+  personalization: <PersonalizationEnginePanel />,
+  customers: <CustomerSatisfactionPanel />,
+  revenue: <RevenueImpactPanel />,
   copilot: <AICopilotPanel />,
-  content: <ContentStudioPanel />,
   journeys: <SmartJourneysPanel />,
-  analytics: <PredictiveAnalyticsPanel />,
-  deliverability: <DeliverabilityPanel />,
-  cdp: <ComingSoon title="Customer Data Platform" />,
-  campaigns: <ComingSoon title="Campaign Manager" />,
-  sms: <ComingSoon title="SMS & Chat" />,
   settings: <ComingSoon title="Settings" />,
 };
 
