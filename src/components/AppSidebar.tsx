@@ -1,19 +1,18 @@
 import { useState } from "react";
 import {
-  BarChart3, Brain, FileText, Gauge, Home, Mail, MessageSquare,
-  MousePointerClick, Route, Settings, Sparkles, Users, ChevronLeft, ChevronRight
+  Home, Users, Heart, MessageSquare, BarChart3, Brain,
+  Settings, ChevronLeft, ChevronRight, Sparkles, Mail, Network, RefreshCw, Zap
 } from "lucide-react";
 
 const navItems = [
-  { icon: Home, label: "Dashboard", id: "dashboard" },
+  { icon: Home, label: "Command Center", id: "dashboard" },
+  { icon: Network, label: "Influence Engine", id: "influence" },
+  { icon: RefreshCw, label: "Lifecycle Engine", id: "lifecycle" },
+  { icon: Heart, label: "Personalization Engine", id: "personalization" },
+  { icon: Users, label: "Customer 360", id: "customers" },
+  { icon: BarChart3, label: "Revenue Impact", id: "revenue" },
   { icon: Brain, label: "AI Co-pilot", id: "copilot" },
-  { icon: FileText, label: "Content Studio", id: "content" },
-  { icon: Route, label: "Smart Journeys", id: "journeys" },
-  { icon: BarChart3, label: "Predictive Analytics", id: "analytics" },
-  { icon: Gauge, label: "Deliverability", id: "deliverability" },
-  { icon: Users, label: "Customer CDP", id: "cdp" },
-  { icon: Mail, label: "Campaigns", id: "campaigns" },
-  { icon: MessageSquare, label: "SMS & Chat", id: "sms" },
+  { icon: Zap, label: "Journeys", id: "journeys" },
 ];
 
 interface AppSidebarProps {
@@ -40,6 +39,15 @@ const AppSidebar = ({ activeSection, onSectionChange }: AppSidebarProps) => {
           </span>
         )}
       </div>
+
+      {!collapsed && (
+        <div className="px-4 py-3 border-b border-sidebar-border">
+          <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-sidebar-accent/50">
+            <Sparkles className="w-3.5 h-3.5 text-sidebar-primary animate-pulse-glow" />
+            <span className="text-xs text-sidebar-primary font-semibold">AI Joe Platform</span>
+          </div>
+        </div>
+      )}
 
       <nav className="flex-1 py-4 px-2 space-y-1 overflow-y-auto">
         {navItems.map((item) => {
